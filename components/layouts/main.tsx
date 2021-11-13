@@ -11,7 +11,7 @@ interface Props {
 
 const Main: NextPage<Props> = ({ children, router }) => {
   return (
-    <Box as="main" padding={8}>
+    <Box as="main" pb={8}>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Nghia.Lam - HomePage</title>
@@ -19,7 +19,7 @@ const Main: NextPage<Props> = ({ children, router }) => {
 
       <Navbar path={router.asPath}></Navbar>
 
-      <Container maxW="container.md" pt={10}>
+      <Container maxW="container.md" pt={14}>
         {children}
       </Container>
     </Box>

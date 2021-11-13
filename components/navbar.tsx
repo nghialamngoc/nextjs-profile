@@ -16,7 +16,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
-
+import ThemeToggleButton from "./theme-toggle-button";
 interface Props {
   href: any;
   path: any;
@@ -26,7 +26,7 @@ interface Props {
 const LinkItem: NextPage<Props> = ({ href, path, children }) => {
   const active = path === href;
   const inactiveColor = useColorModeValue("gray200", "whiteAlpha.900");
-  
+
   return (
     <NextLink href={href}>
       <Link
@@ -46,6 +46,7 @@ const Navbar = (props: any) => {
   return (
     <Box
       as="nav"
+      position="fixed"
       w="100%"
       bg={useColorModeValue("#ffffff40", "#20202380")}
       style={{ backdropFilter: "blur(10px)" }}
@@ -81,6 +82,7 @@ const Navbar = (props: any) => {
           </LinkItem>
         </Stack>
         <Box flex={1} align="right">
+          <ThemeToggleButton></ThemeToggleButton>
           <Box ml={2} display={{ base: "inline-block", md: "none" }}>
             <Menu isLazy id="navbar-menu">
               <MenuButton
