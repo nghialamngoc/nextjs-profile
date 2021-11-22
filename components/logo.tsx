@@ -1,21 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Text, useColorModeValue } from "@chakra-ui/react";
-import styled from "@emotion/styled";
-
-const LogoBox = styled.span`
-  font-weight: bold;
-  font-size: 18px;
-  display: inline-flex;
-  align-items: center;
-  height: 30px;
-  line-height: 20px;
-  padding: 10px;
-
-  &:hover img {
-    transform: rotate(20deg);
-  }
-`;
+import styles from "../styles/Home.module.scss";
 
 const Logo = () => {
   const footPrintImg = `/images/footprint${useColorModeValue("", "-dark")}.png`;
@@ -23,17 +9,16 @@ const Logo = () => {
   return (
     <Link href="/">
       <a>
-        <LogoBox>
+        <div className={styles.logobox}>
           <Image src={footPrintImg} width={20} height={20} alt="logo"></Image>
           <Text
             color={useColorModeValue("gray.800", "whiteAlpla.900")}
-            fontFamily="M PLUS Rounded 1c"
             fontWeight="bold"
             ml={3}
           >
             Lam Ngoc Nghia
           </Text>
-        </LogoBox>
+        </div>
       </a>
     </Link>
   );

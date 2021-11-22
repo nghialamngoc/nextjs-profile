@@ -3,6 +3,7 @@ import { Box, Container } from "@chakra-ui/react";
 import Navbar from "../navbar";
 import { NextPage } from "next";
 import { Router } from "next/dist/client/router";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface Props {
   children: any;
@@ -12,16 +13,21 @@ interface Props {
 const Main: NextPage<Props> = ({ children, router }) => {
   return (
     <Box as="main" pb={8}>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Nghia.Lam - HomePage</title>
-      </Head>
-
       <Navbar path={router.asPath}></Navbar>
 
-      <Container maxW="container.md" pt={14}>
-        {children}
-      </Container>
+      <AnimatePresence exitBeforeEnter initial={false}>
+        <motion.div
+          key={router.asPath}
+          initial={{ x: 0, y: 20, opacity: 0 }}
+          animate={{ x: 0, y: 0, opacity: 1 }}
+          exit={{ x: 0, y: 0, opacity: 0 }}
+          transition={{ duration: 0.4, type: 'easeInOut' }}
+        >
+          <Container maxW="container.md" pt={14}>
+            {children}
+          </Container>
+        </motion.div>
+      </AnimatePresence>
     </Box>
   );
 };
